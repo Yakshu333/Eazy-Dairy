@@ -1,0 +1,506 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    width: 350px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.notification-icon {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 24px;
+    color: #4a4a4a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    /* Ensure above dropdown if needed, though dropdown is usually on top */
+}
+
+.notification-icon:hover {
+    color: #764ba2;
+    transform: scale(1.1);
+}
+
+.notification-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    width: 300px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow: hidden;
+    animation: slideDown 0.3s ease;
+    border: 1px solid #eee;
+    text-align: left;
+    /* Reset text align from container */
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-header {
+    background: #f8f9fa;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.notification-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.no-notifications {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+}
+
+.dashboard-container {
+    width: 900px;
+    max-width: 95vw;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+.app-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+input:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+    outline: none;
+    background: white;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#sendOtpBtn {
+    width: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    user-select: none;
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: #764ba2;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+a {
+    color: #764ba2;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #667eea;
+    text-decoration: underline;
+}
+
+#message {
+    margin-top: 15px;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+/* Dashboard Styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.dashboard-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4a4a4a;
+    margin-top: 0;
+    /* Override default button margin */
+    box-shadow: none;
+    /* Override default button shadow */
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-3px);
+    border-color: #764ba2;
+    color: #764ba2;
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.2);
+    background: white;
+}
+
+.dashboard-btn i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.dashboard-btn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#logoutBtn {
+    background: #ff4757;
+    margin-top: 20px;
+}
+
+#logoutBtn:hover {
+    background: #ff6b81;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#dateTimeDisplay {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+
+.goal-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #764ba2;
+    text-align: left;
+}
+
+.goal-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.goal-text {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.goal-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #764ba2;
+}
+
+.delete-goal-btn {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    margin: 0;
+    width: auto;
+    box-shadow: none;
+    transition: color 0.3s;
+}
+
+.delete-goal-btn:hover {
+    color: #ff6b81;
+    transform: scale(1.1);
+    background: none;
+    box-shadow: none;
+}
+
+.edit-goal-btn {
+    background: none;
+    border: none;
+    color: #3498db;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    margin: 0;
+    width: auto;
+    box-shadow: none;
+    transition: color 0.3s;
+}
+
+.edit-goal-btn:hover {
+    color: #2980b9;
+    transform: scale(1.1);
+    background: none;
+    box-shadow: none;
+}
+
+/* Calendar Styles */
+.nav-btn {
+    background: none;
+    border: none;
+    color: #764ba2;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: none;
+    width: auto;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+.nav-btn:hover {
+    color: #667eea;
+    transform: scale(1.1);
+    background: none;
+    box-shadow: none;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+    padding: 5px 0;
+}
+
+.calendar-day {
+    background: white;
+    min-height: 50px;
+    /* Reduced height for compactness */
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.calendar-day:hover {
+    border-color: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-day.today {
+    background: #f0f4ff;
+    border-color: #764ba2;
+    font-weight: bold;
+}
+
+.calendar-day.other-month {
+    opacity: 0.4;
+    background: #f9f9f9;
+}
+
+.day-number {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.event-marker {
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.birthday-marker {
+    color: #ff6b81;
+}
+
+.holiday-marker {
+    color: #ffa502;
+    cursor: help;
+    /* Show tooltip cursor */
+}
+
+/* Tooltip for Holidays */
+.calendar-day[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Modal Styles */
+.modal-item {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-item:last-child {
+    border-bottom: none;
+}
+
+.modal-item i {
+    margin-right: 8px;
+}
+
+.modal-item.holiday {
+    color: #ffa502;
+}
+
+.modal-item.birthday {
+    color: #ff6b81;
+}
+
+.delete-mode .modal-item {
+    cursor: pointer;
+}
+
+.delete-mode .modal-item:hover {
+    background-color: #ffecec;
+}
